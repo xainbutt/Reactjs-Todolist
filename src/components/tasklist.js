@@ -6,8 +6,15 @@ import Task from './task';
 export default class TaskList extends React.Component{
     constructor(props){
         super(props);
-        
+        this.deleteTask = this.deleteTask.bind(this);
     }
+  
+    deleteTask(e){
+        console.log(e);
+        console.log('delete method in TaskList');
+        this.props.onDeleteTask(e);
+    }
+
 
     render(){
        return(
@@ -16,9 +23,10 @@ export default class TaskList extends React.Component{
                 <div className="panel-heading">
                     <h3>Tasks for today</h3>
                 </div>
-                    <div className="panel-body">
-                        {this.props.tasks.map(task => <Task key={task} {...task} />)}
-                    </div>
+                    <ul className="panel-body">
+                        {this.props.tasks.map(task => <Task onClick={e => this.deleteTask} key={task} task={task} />)}
+                        
+                    </ul>
                 </div>
            </div>
        );
