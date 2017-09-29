@@ -17,9 +17,11 @@ export default class TaskInput extends React.Component{
 
     addTask(e){
         e.preventDefault();
+
         console.log(this.state.task);
         console.log('in form');
         this.props.onSubmit(this.state.task);
+        this.setState({task: ''});
     }
     
     render(){

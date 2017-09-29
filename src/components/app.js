@@ -14,10 +14,9 @@ export default class App extends React.Component{
     }
 
     removeTaskFromList(data){
-        console.log('app delete');
-        console.log(data);
-        this.setState((prevState) => ({
-            taskList: prevState.taskList.concat(data)
+        // console.log(data);
+        this.setState(prevState => ({
+            taskList: prevState.taskList.filter(el => el != data )
         }));
     }
 
@@ -35,7 +34,7 @@ export default class App extends React.Component{
             <div>
                 <Header />
                 <TaskInput onSubmit={this.addTaskInList}/>
-                <TaskList tasks={this.state.taskList} onDeleteTask={this.removeTaskFromList} />
+                <TaskList tasks={this.state.taskList} onStrikeTask={this.strikeTaskFromList} onDeleteTask={this.removeTaskFromList} />
             </div>
         );
     }
