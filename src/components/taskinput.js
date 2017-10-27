@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import style from '../style.css';
 
 export default class TaskInput extends React.Component{
     
@@ -26,12 +27,12 @@ export default class TaskInput extends React.Component{
     
     render(){
         return(
-            <div className="col-md-8 col-md-offset-2">
+            
                 <form onSubmit={this.addTask} >
                     <input type="text" className="form-control" value={this.state.task} style={{ marginBottom: '15px'}} placeholder="Enter Task" onChange={this.handleInput} />
                     <button type="submit" className="btn btn-primary">Add Task</button>
                 </form>
-            </div>
+    
         );
     }
 }
