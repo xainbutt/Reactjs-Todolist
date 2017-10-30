@@ -21,7 +21,7 @@ export default class Task extends React.Component{
     render(){
         return(
             <div>
-                <p>{this.props.task} <span onClick={this.update} className='glyphicon glyphicon-edit' ></span> <span onClick={this.delete} className="glyphicon glyphicon-remove pull-right task-remove"></span></p>
+                <p>{this.props.task}  <span onClick={this.delete} className="glyphicon glyphicon-remove pull-right task-remove"></span><span onClick={this.update} className='glyphicon glyphicon-edit pull-right task-update' ></span></p>
             </div>
         );
     }

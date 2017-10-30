@@ -29,7 +29,7 @@ export default class TaskInput extends React.Component{
         return(
             
                 <form onSubmit={this.addTask} >
-                    <input type="text" className="form-control" value={this.state.task} style={{ marginBottom: '15px'}} placeholder="Enter Task" onChange={this.handleInput} />
+                    <input type="text" required autoFocus className="form-control" value={this.state.task} style={{ marginBottom: '15px'}} placeholder="Enter Task" onChange={this.handleInput} />
                     <button type="submit" className="btn btn-primary">Add Task</button>
                 </form>
     

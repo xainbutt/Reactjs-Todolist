@@ -11,6 +11,7 @@ export default class EditTask extends React.Component{
             task: this.props.task
         }
         this.handleInput = this.handleInput.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleInput(e){
@@ -18,11 +19,16 @@ export default class EditTask extends React.Component{
         this.setState({task: e.target.value});
     }
     
+    handleSubmit(e){
+        e.preventDefault();
+        this.props.updateTask(this.state.task, this.props.task);
+        this.setState({task: ''});
+    }
     render(){
         return(
             
-                <form onSubmit={this.updateTask} >
-                    <input type="text" className="form-control" value={this.state.task} style={{ marginBottom: '15px'}} onChange={this.handleInput} />
+                <form onSubmit={this.handleSubmit} >
+                    <input type="text" required autoFocus className="form-control" value={this.state.task} style={{ marginBottom: '15px'}} onChange={this.handleInput} />
                     <button type="submit" className="btn btn-primary">Update Task</button>
                 </form>
     

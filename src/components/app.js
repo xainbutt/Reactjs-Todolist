@@ -48,8 +48,16 @@ export default class App extends React.Component{
        
     }
 
-    updateTaskInList(data){
-        console.log('in parent update');
+    updateTaskInList(newData, oldData){
+        console.log('in parent update :' + newData);
+        let index = this.state.taskList.indexOf(oldData);
+        this.state.taskList.splice(index, 1);
+        this.state.taskList.splice(index, 0, newData);
+        
+        this.setState( (prevState) => ({
+           taskList: this.state.taskList,
+           isEdit: false
+        }));
     }
 
     render(){
@@ -59,7 +67,7 @@ export default class App extends React.Component{
                 <div className='container'>
                     <div className='row'>
                         <div className='col-sm-6'>
-                           {this.state.isEdit ? <EditTask key={this.state.taskToUpdate} task={this.state.taskToUpdate} /> : <TaskInput onSubmit={this.addTaskInList}/> }
+                           {this.state.isEdit ? <EditTask key={this.state.taskToUpdate} task={this.state.taskToUpdate} updateTask={this.updateTaskInList} /> : <TaskInput onSubmit={this.addTaskInList}/> }
                         </div>
                         <div className='col-sm-6'>
                             { this.state.taskList.length != 0 ?  <TaskList tasks={this.state.taskList} onStrikeTask={this.strikeTaskFromList} onUpdateTask={this.showEditTask} onDeleteTask={this.removeTaskFromList} /> : <div className='alert alert-info'>no tasks today</div> }     
